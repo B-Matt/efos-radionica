@@ -5,19 +5,23 @@
 
 package com.mastergames.efosradionica.models;
 
+import android.graphics.drawable.Drawable;
+
 public class Food
 {
     private String name;
     private Float rating;
     private String type;
+    private Drawable image;
     private Float price;
-    private Float deliveryTime;
+    private Integer deliveryTime;
 
-    public Food(String name, Float rating, String type, Float price, Float deliveryTime)
+    public Food(String name, Float rating, String type, Drawable image, Float price, Integer deliveryTime)
     {
         this.name = name;
         this.rating = rating;
         this.type = type;
+        this.image = image;
         this.price = price;
         this.deliveryTime = deliveryTime;
     }
@@ -51,6 +55,14 @@ public class Food
     }
 
     /**
+     * Gets food image (16:9).
+     * @return BitmapDrawable Index.
+     */
+    public Drawable getImage() {
+        return image;
+    }
+
+    /**
      * Gets food price.
      * @return price
      */
@@ -62,7 +74,7 @@ public class Food
      * Gets food delivery time.
      * @return delivery time.
      */
-    public Float getDeliveryTime() {
+    public Integer getDeliveryTime() {
         return deliveryTime;
     }
 }

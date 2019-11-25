@@ -5,6 +5,7 @@
 
 package com.mastergames.efosradionica.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -33,6 +35,7 @@ public class FoodListAdapter extends ArrayAdapter<Food>
         super(context, 0, foods);
     }
 
+    @SuppressLint("DefaultLocale")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent)
@@ -45,13 +48,17 @@ public class FoodListAdapter extends ArrayAdapter<Food>
         Food food = getItem(position);
         TextView foodTitle = convertView.findViewById(R.id.foodTitle);
         RatingBar foodRating = convertView.findViewById(R.id.foodRating);
+        TextView foodType = convertView.findViewById(R.id.foodType);
+        ImageView foodImage = convertView.findViewById(R.id.foodImage);
         TextView foodPrice = convertView.findViewById(R.id.priceText);
         TextView foodDeliveryTime = convertView.findViewById(R.id.deliveryText);
 
         foodTitle.setText(food.getName());
         foodRating.setRating(food.getRating());
-        foodPrice.setText(food.getPrice().toString());
-        foodDeliveryTime.setText(food.getDeliveryTime().toString());
-        return super.getView(position, convertView, parent);
+        foodType.setText(food.getType());
+        foodImage.setImageDrawable(food.getImage());
+        foodPrice.setText(String.format("Cijena: %.2fkn", food.getPrice()));
+        foodDeliveryTime.setText(String.format("%d min", food.getDeliveryTime()));
+        return convertView;
     }
 }
