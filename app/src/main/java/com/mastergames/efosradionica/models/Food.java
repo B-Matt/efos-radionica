@@ -7,16 +7,18 @@ package com.mastergames.efosradionica.models;
 
 import android.graphics.drawable.Drawable;
 
-public class Food
+import java.io.Serializable;
+
+public class Food implements Serializable
 {
     private String name;
     private Float rating;
     private String type;
-    private Drawable image;
+    private Integer image;
     private Float price;
     private Integer deliveryTime;
 
-    public Food(String name, Float rating, String type, Drawable image, Float price, Integer deliveryTime)
+    public Food(String name, Float rating, String type, Integer image, Float price, Integer deliveryTime)
     {
         this.name = name;
         this.rating = rating;
@@ -58,7 +60,7 @@ public class Food
      * Gets food image (16:9).
      * @return BitmapDrawable Index.
      */
-    public Drawable getImage() {
+    public Integer getImage() {
         return image;
     }
 

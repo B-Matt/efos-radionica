@@ -7,21 +7,25 @@ package com.mastergames.efosradionica.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.mastergames.efosradionica.CheckoutActivity;
 import com.mastergames.efosradionica.R;
 import com.mastergames.efosradionica.models.Food;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class FoodListAdapter extends ArrayAdapter<Food>
@@ -45,20 +49,35 @@ public class FoodListAdapter extends ArrayAdapter<Food>
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.order_list_item, parent, false);
         }
 
-        Food food = getItem(position);
+        // Get Information From Model For Given Item
+        final Food food = getItem(position);
+
+        // Get Items From Activity Frontend
         TextView foodTitle = convertView.findViewById(R.id.foodTitle);
         RatingBar foodRating = convertView.findViewById(R.id.foodRating);
         TextView foodType = convertView.findViewById(R.id.foodType);
         ImageView foodImage = convertView.findViewById(R.id.foodImage);
         TextView foodPrice = convertView.findViewById(R.id.priceText);
         TextView foodDeliveryTime = convertView.findViewById(R.id.deliveryText);
+        Button foodBuyButton = convertView.findViewById(R.id.foodBuy);
 
+        // Set Information From Food Model
         foodTitle.setText(food.getName());
         foodRating.setRating(food.getRating());
         foodType.setText(food.getType());
-        foodImage.setImageDrawable(food.getImage());
+        foodImage.setImageDrawable(getContext().getDrawable(food.getImage()));
         foodPrice.setText(String.format("%.2fkn", food.getPrice()));
         foodDeliveryTime.setText(String.format("%d min", food.getDeliveryTime()));
+
+        // Handle Order Button
+        foodBuyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), CheckoutActivity.class);
+                intent.putExtra("order", food);
+                getContext().startActivity(intent);
+            }
+        });
         return convertView;
     }
 }
