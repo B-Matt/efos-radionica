@@ -57,7 +57,7 @@ public class FoodListAdapter extends ArrayAdapter<Food>
         foodRating.setRating(food.getRating());
         foodType.setText(food.getType());
         foodImage.setImageDrawable(food.getImage());
-        foodPrice.setText(String.format("Cijena: %.2fkn", food.getPrice()));
+        foodPrice.setText(String.format("%.2fkn", food.getPrice()));
         foodDeliveryTime.setText(String.format("%d min", food.getDeliveryTime()));
         return convertView;
     }
