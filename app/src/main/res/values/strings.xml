@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">EFOSRadionica</string>
+    <string name="app_yes">Da</string>
+    <string name="app_no">Ne</string>
 </resources>

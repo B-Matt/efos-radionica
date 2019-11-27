@@ -35,13 +35,13 @@ public class CheckoutActivity extends AppCompatActivity
         TextView mPriceText = findViewById(R.id.priceText);
 
         // Set Information From Food Model
-        mInfoText.setText(Html.fromHtml(String.format("Izdržite još samo malo!\nVaša narudžba(<b>%s</b>) dolazi za otprilike:", order.getName())));
+        mInfoText.setText(Html.fromHtml(String.format("Izdržite još samo malo!<br>Vaša narudžba(<b>%s</b>) dolazi za otprilike:", order.getName())));
         mDeliveryTimeText.setText(String.format("%2d:00", order.getDeliveryTime()));
         mPriceText.setText(Html.fromHtml(String.format("Narudžba će iznositi: <i>%.2fkn</i>", order.getPrice())));
 
         // Starts Delivery Timer
-        new CountDownTimer(TimeUnit.MINUTES.toMillis(order.getDeliveryTime()), 1000) {
-
+        new CountDownTimer(TimeUnit.MINUTES.toMillis(order.getDeliveryTime()), 1000)
+        {
             public void onTick(long millisUntilFinished) {
                 int seconds = (int) (millisUntilFinished / 1000);
                 int minutes = seconds / 60;

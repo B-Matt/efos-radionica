@@ -6,7 +6,9 @@
 package com.mastergames.efosradionica.adapter;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -73,9 +75,22 @@ public class FoodListAdapter extends ArrayAdapter<Food>
         foodBuyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), CheckoutActivity.class);
-                intent.putExtra("order", food);
-                getContext().startActivity(intent);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage(String.format("Želite li naručiti \"%s\"?", food.getName()))
+                        .setPositiveButton(R.string.app_yes, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent intent = new Intent(getContext(), CheckoutActivity.class);
+                                intent.putExtra("order", food);
+                                getContext().startActivity(intent);
+                            }
+                        })
+                        .setNegativeButton(R.string.app_no, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                            }
+                        })
+                        .show();
             }
         });
         return convertView;

@@ -23,7 +23,6 @@
             android:id="@+id/infoText"
             android:layout_width="225dp"
             android:layout_height="wrap_content"
-            android:text=""
             android:textAlignment="center"
             android:textColor="@android:color/tertiary_text_light"
             android:textSize="14sp"
@@ -36,7 +35,7 @@
             android:id="@+id/constraintLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,7 +43,7 @@
 
             <ImageView
                 android:id="@+id/deliveryTimeIcon"
-                android:layout_width="22dp"
+                android:layout_width="24dp"
                 android:layout_height="0dp"
                 android:layout_weight="1.0"
                 android:src="@drawable/ic_time_icon"
@@ -60,9 +59,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
                 android:layout_weight="0.5"
-                android:text=""
                 android:textColor="@android:color/tertiary_text_light"
-                android:textSize="22sp"
+                android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/deliveryTimeIcon"
@@ -70,20 +68,20 @@
 
         </android.support.constraint.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/priceText"
-            android:layout_width="170dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text=""
-            android:textAlignment="center"
-            android:textColor="@android:color/tertiary_text_light"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
     </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/priceText"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="64dp"
+        android:text=""
+        android:textAlignment="center"
+        android:textColor="@android:color/tertiary_text_light"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
