@@ -17,4 +17,4 @@ Jednostavna Android aplikacija napravljena za radionicu na Ekonomskog fakultetu 
 
 # Copyright
 
-(c) [Master Games Studios](https://gas-locator.com/) (Matej Arlović), 2019.
+(c) [Master Games Studios](https://themastergames.com/) (Matej Arlović), 2019.
